@@ -1,0 +1,37 @@
+ALGORITHM check_point4
+VAR
+    i,j:INTEGER;
+BEGIN
+// 1 er solution avec boucle for et if
+    PROCEDURE tri_inserion(VAR arr:ARRAY_OF INTEGER)
+    VAR
+        aux:INTEGER;
+    BEGIN
+        FOR i FROM 1 TO (length(arr)-1)STEP 1  DO
+         aux:=arr[i];
+           FOR j FROM (i-1) TO 0 STEP -1  DO
+              IF (aux<arr[j]) THEN
+                  arr[j+1] := arr[j];
+                  arr[j]:= aux;
+              END_IF
+           END_FOR
+          
+        END_FOR
+      END
+      // 2 eme solution avec boucle while 
+      PROCEDURE tri_inserion(VAR arr:ARRAY_OF INTEGER)
+    VAR
+        aux:INTEGER;
+    BEGIN
+        FOR i FROM 1 TO (length(arr)-1)STEP 1  DO
+         aux:=arr[i];
+         j:=i-1;
+           WHILE (aux<arr[i] ) DO
+              arr[j+1]:=arr[j];
+              j:=j-1;
+           END_WHILE
+          arr[j+1]:=aux;
+        END_FOR
+      END
+
+END
